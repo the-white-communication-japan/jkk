@@ -6,6 +6,7 @@ import remarkGfm from "remark-gfm";
 import { prisma } from "@/lib/prisma";
 import { formatDate, toISODate } from "@/lib/format";
 import { categoryMeta } from "@/lib/categories";
+import { SITE_NAME, SITE_LOCALE, SITE_DESCRIPTION } from "@/lib/site";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
@@ -19,11 +20,33 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = await prisma.post.findUnique({ where: { slug } });
   if (!post || !post.published) {
-    return { title: "記事が見つかりません｜株式会社JKK" };
+    return {
+      title: "記事が見つかりません",
+      robots: { index: false, follow: false },
+    };
   }
+  const url = `/blog/${post.slug}`;
+  const description = post.excerpt ?? SITE_DESCRIPTION;
+  const ogTitle = `${post.title}｜${SITE_NAME} ブログ`;
   return {
-    title: `${post.title}｜株式会社JKK ブログ`,
-    description: post.excerpt ?? undefined,
+    title: post.title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "article",
+      locale: SITE_LOCALE,
+      url,
+      siteName: SITE_NAME,
+      title: ogTitle,
+      description,
+      publishedTime: post.createdAt.toISOString(),
+      modifiedTime: post.updatedAt.toISOString(),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: ogTitle,
+      description,
+    },
   };
 }
 

@@ -1,11 +1,58 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import {
+  SITE_URL,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_DESCRIPTION,
+  SITE_LOCALE,
+  SITE_KEYWORDS,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
-  title:
-    "株式会社JKK｜看板からネットまで。地域のお店・企業の集客を支援する。",
-  description:
-    "商工案内地図看板、地域密着型ポータルサイト『どこねっと！！』、デジタルマーケティング支援まで。創業36年の地域ネットワークで、街のお店・企業の集客を一括サポート。",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_TITLE,
+    template: `%s｜${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  keywords: SITE_KEYWORDS,
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  category: "business",
+  formatDetection: { telephone: false, email: false, address: false },
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: SITE_LOCALE,
+    url: "/",
+    siteName: SITE_NAME,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#14375c",
+  colorScheme: "light",
 };
 
 export default function RootLayout({

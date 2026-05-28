@@ -7,13 +7,25 @@ import {
   categoryFromSlug,
   categoryMeta,
 } from "@/lib/categories";
+import { SITE_NAME, SITE_LOCALE } from "@/lib/site";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
+const BLOG_DESCRIPTION =
+  "お知らせ・ニュース・アップデート情報を、株式会社JKKが発信しています。";
+
 export const metadata: Metadata = {
-  title: "ブログ｜株式会社JKK",
-  description:
-    "お知らせ・ニュース・アップデート情報を、株式会社JKKが発信しています。",
+  title: "ブログ",
+  description: BLOG_DESCRIPTION,
+  alternates: { canonical: "/blog" },
+  openGraph: {
+    type: "website",
+    locale: SITE_LOCALE,
+    url: "/blog",
+    siteName: SITE_NAME,
+    title: `ブログ｜${SITE_NAME}`,
+    description: BLOG_DESCRIPTION,
+  },
 };
 
 // Rendered per-request so new posts appear immediately and the build does not
