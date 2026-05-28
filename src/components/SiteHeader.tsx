@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LINE_URL } from "@/lib/site";
 
 export default function SiteHeader({
   active,
@@ -58,9 +59,14 @@ export default function SiteHeader({
               </Link>
             </li>
           </ul>
-          <Link className="btn btn--primary btn--header" href="/#contact">
+          <a
+            className="btn btn--primary btn--header"
+            href={LINE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             お問い合わせ
-          </Link>
+          </a>
         </nav>
       </div>
     </header>

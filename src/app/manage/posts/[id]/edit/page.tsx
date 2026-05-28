@@ -10,7 +10,9 @@ export default async function EditPostPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const post = await prisma.post.findUnique({ where: { id } });
+  const postId = Number(id);
+  if (!Number.isInteger(postId)) notFound();
+  const post = await prisma.post.findUnique({ where: { id: postId } });
   if (!post) notFound();
 
   const action = updatePost.bind(null, post.id);
@@ -24,7 +26,7 @@ export default async function EditPostPage({
           {post.published ? (
             <Link
               className="link-arrow"
-              href={`/blog/${post.slug}`}
+              href={`/blog/${post.id}`}
               target="_blank"
               rel="noopener"
             >

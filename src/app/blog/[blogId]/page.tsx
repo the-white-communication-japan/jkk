@@ -15,17 +15,20 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ blogId: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
-  const post = await prisma.post.findUnique({ where: { slug } });
+  const { blogId } = await params;
+  const id = Number(blogId);
+  const post = Number.isInteger(id)
+    ? await prisma.post.findUnique({ where: { id } })
+    : null;
   if (!post || !post.published) {
     return {
       title: "記事が見つかりません",
       robots: { index: false, follow: false },
     };
   }
-  const url = `/blog/${post.slug}`;
+  const url = `/blog/${post.id}`;
   const description = post.excerpt ?? SITE_DESCRIPTION;
   const ogTitle = `${post.title}｜${SITE_NAME} ブログ`;
   return {
@@ -53,10 +56,13 @@ export async function generateMetadata({
 export default async function BlogPostPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ blogId: string }>;
 }) {
-  const { slug } = await params;
-  const post = await prisma.post.findUnique({ where: { slug } });
+  const { blogId } = await params;
+  const id = Number(blogId);
+  const post = Number.isInteger(id)
+    ? await prisma.post.findUnique({ where: { id } })
+    : null;
   if (!post || !post.published) notFound();
 
   return (

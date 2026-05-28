@@ -95,7 +95,7 @@ export default async function BlogIndex({
                 const cat = categoryMeta(post.category);
                 return (
                   <li key={post.id}>
-                    <Link className="blog-card" href={`/blog/${post.slug}`}>
+                    <Link className="blog-card" href={`/blog/${post.id}`}>
                       <div className="blog-card__head">
                         <span className={`news-cat ${cat.badgeClass}`}>
                           {cat.label}

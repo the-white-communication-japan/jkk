@@ -21,6 +21,10 @@ function resolveSiteUrl(): string {
 
 export const SITE_URL = resolveSiteUrl();
 
+// Official LINE channel (友だち追加) link the お問い合わせ buttons point to.
+// Set NEXT_PUBLIC_LINE_URL to the real lin.ee / line.me URL.
+export const LINE_URL = process.env.NEXT_PUBLIC_LINE_URL?.trim() || "#";
+
 export const SITE_NAME = "株式会社JKK";
 
 export const SITE_TITLE =

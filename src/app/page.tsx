@@ -5,6 +5,7 @@ import HeroArt from "@/components/HeroArt";
 import { prisma } from "@/lib/prisma";
 import { formatDate, toISODate } from "@/lib/format";
 import { categoryMeta } from "@/lib/categories";
+import { LINE_URL } from "@/lib/site";
 
 // Statically generated, revalidated periodically; post mutations also call
 // revalidatePath("/"). Wrapped in try/catch so the page renders even if the
@@ -56,9 +57,14 @@ export default async function Home() {
             <Link className="btn btn--hero btn--lg" href="#services">
               サービスを見る
             </Link>
-            <Link className="btn btn--hero-ghost btn--lg" href="#contact">
+            <a
+              className="btn btn--hero-ghost btn--lg"
+              href={LINE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               お問い合わせ
-            </Link>
+            </a>
           </div>
 
           <ul className="hero__trust">
@@ -523,32 +529,76 @@ export default async function Home() {
             </div>
           </div>
 
-          <div className="cases-coming">
-            <div className="cases-coming__icon" aria-hidden="true">
-              <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <circle cx="40" cy="40" r="30" strokeDasharray="4 4" />
-                <path d="M40 26 L40 40 L50 46" />
-              </svg>
-            </div>
-            <div>
-              <h3>事例は順次公開予定です</h3>
-              <p>
-                地域のお店・企業の集客支援事例を、業種・地域ごとに整理して公開していきます。
-                <br />
-                取材中の事例も多数あります。詳しい内容は、お気軽にお問い合わせください。
-              </p>
-              <div className="cases-coming__tags">
-                <span>飲食店</span>
-                <span>美容・サロン</span>
-                <span>クリニック</span>
-                <span>士業</span>
-                <span>小売店</span>
-                <span>不動産</span>
-                <span>工務店</span>
-                <span>地域団体</span>
+          <div className="grid-3 cases-grid">
+            <article className="card case-card">
+              <div className="case-card__top">
+                <span className="pill">飲食店</span>
+                <div className="case-card__metric">
+                  <strong>
+                    1.4<em>倍</em>
+                  </strong>
+                  <small>新規来店数</small>
+                </div>
               </div>
-            </div>
+              <h3 className="case-card__title">案内看板×どこねっと！！で、新規のお客様が増加</h3>
+              <p className="case-card__desc">
+                街頭の案内看板にQRコードを掲載し、どこねっと！！で季節メニューや写真を定期発信。
+                地域の通行者を新規来店につなげました。
+              </p>
+              <div className="case-card__meta">
+                <span>ラーメン店</span>
+                <span>郊外ロードサイド</span>
+              </div>
+            </article>
+
+            <article className="card case-card">
+              <div className="case-card__top">
+                <span className="pill" style={{ background: "rgba(45,140,214,.10)", color: "var(--jkk-accent)" }}>
+                  美容・サロン
+                </span>
+                <div className="case-card__metric">
+                  <strong>
+                    +60<em>%</em>
+                  </strong>
+                  <small>ネット予約</small>
+                </div>
+              </div>
+              <h3 className="case-card__title">Googleビジネスプロフィール運用で、予約が安定</h3>
+              <p className="case-card__desc">
+                口コミ返信と店内写真の更新を継続サポート。マップ検索からの流入が増え、
+                ネット予約の比率が向上しました。
+              </p>
+              <div className="case-card__meta">
+                <span>ヘアサロン</span>
+                <span>駅前商店街</span>
+              </div>
+            </article>
+
+            <article className="card case-card">
+              <div className="case-card__top">
+                <span className="pill" style={{ background: "rgba(20,55,92,.08)", color: "var(--jkk-navy)" }}>
+                  クリニック
+                </span>
+                <div className="case-card__metric">
+                  <strong>
+                    2.3<em>倍</em>
+                  </strong>
+                  <small>サイト流入</small>
+                </div>
+              </div>
+              <h3 className="case-card__title">紹介動画とWeb発信で、地域での認知が定着</h3>
+              <p className="case-card__desc">
+                事業紹介動画とどこねっと！！の専用ページを制作。診療内容や院内の様子を
+                わかりやすく届け、地域での認知につなげました。
+              </p>
+              <div className="case-card__meta">
+                <span>歯科クリニック</span>
+                <span>住宅地エリア</span>
+              </div>
+            </article>
           </div>
+
+          <p className="cases-note">※ 掲載内容はイメージです。実際の導入事例は順次公開予定です。</p>
         </div>
       </section>
 
@@ -591,7 +641,7 @@ export default async function Home() {
                     <span className={`news-cat ${cat.badgeClass}`}>
                       {cat.label}
                     </span>
-                    <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                    <Link href={`/blog/${post.id}`}>{post.title}</Link>
                   </li>
                 );
               })}
@@ -617,10 +667,20 @@ export default async function Home() {
             地域に根差した営業担当者が、お店・企業の状況に合わせて無理のないプランをご提案します。
           </p>
           <div className="actions">
-            <a className="btn btn--primary btn--lg" href="#">
+            <a
+              className="btn btn--primary btn--lg"
+              href={LINE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               お問い合わせ
             </a>
-            <a className="btn btn--ghost btn--lg" href="#">
+            <a
+              className="btn btn--ghost btn--lg"
+              href={LINE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               サービスについて相談する
             </a>
           </div>

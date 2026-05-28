@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LINE_URL } from "@/lib/site";
 
 export default function SiteFooter() {
   return (
@@ -57,7 +58,9 @@ export default function SiteFooter() {
             <h4>お問い合わせ</h4>
             <ul>
               <li>
-                <Link href="/#contact">お問い合わせフォーム</Link>
+                <a href={LINE_URL} target="_blank" rel="noopener noreferrer">
+                  お問い合わせフォーム
+                </a>
               </li>
               <li>
                 <a href="tel:0120000000">電話で相談する</a>
