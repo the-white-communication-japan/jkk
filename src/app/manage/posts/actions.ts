@@ -62,10 +62,11 @@ export async function createUploadUrl(input: {
     };
   }
 
-  const now = new Date();
-  const yyyy = now.getUTCFullYear();
-  const mm = String(now.getUTCMonth() + 1).padStart(2, "0");
-  const key = `blog/${yyyy}/${mm}/${randomUUID()}.${ext}`;
+  // Object key: jkk/<epoch-ms><uuid>.<ext>
+  //   e.g. jkk/1774442069351368996ec-bb2e-46e1-9b7c-63b161475de4.jpg
+  // The millisecond timestamp keeps listings roughly chronological; the UUID
+  // guarantees uniqueness within the same millisecond.
+  const key = `jkk/${Date.now()}${randomUUID()}.${ext}`;
 
   const uploadUrl = await getSignedUrl(
     s3,
