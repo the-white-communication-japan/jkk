@@ -31,7 +31,14 @@ function createClient() {
   // Local Postgres needs no SSL. RDS needs SSL but without CA verification.
   const ssl = isLocal ? undefined : { rejectUnauthorized: false };
 
-  const adapter = new PrismaPg({ connectionString, ssl }, { schema });
+  // Cap connection acquisition. Without this the pg default is 0 (wait forever),
+  // so an unreachable DB during `next build` (e.g. RDS security group blocking
+  // Vercel's build IPs) hangs the build indefinitely instead of throwing. On
+  // timeout the query rejects and callers' try/catch fall back to empty data.
+  const adapter = new PrismaPg(
+    { connectionString, ssl, connectionTimeoutMillis: 10_000 },
+    { schema },
+  );
   return new PrismaClient({ adapter });
 }
 
