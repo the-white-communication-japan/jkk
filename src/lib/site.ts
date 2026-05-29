@@ -25,6 +25,11 @@ export const SITE_URL = resolveSiteUrl();
 // Set NEXT_PUBLIC_LINE_URL to the real lin.ee / line.me URL.
 export const LINE_URL = process.env.NEXT_PUBLIC_LINE_URL?.trim() || "#";
 
+// Google Analytics 4 measurement ID. Override per environment with
+// NEXT_PUBLIC_GA_ID; defaults to the production property.
+export const GA_MEASUREMENT_ID =
+  process.env.NEXT_PUBLIC_GA_ID?.trim() || "G-5N32Q99YQ4";
+
 export const SITE_NAME = "株式会社JKK";
 
 export const SITE_TITLE =

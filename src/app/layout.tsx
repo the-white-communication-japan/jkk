@@ -1,4 +1,6 @@
 import type { Metadata, Viewport } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import {
   SITE_URL,
@@ -7,6 +9,7 @@ import {
   SITE_DESCRIPTION,
   SITE_LOCALE,
   SITE_KEYWORDS,
+  GA_MEASUREMENT_ID,
 } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -62,7 +65,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body>{children}</body>
+      <body>
+        {children}
+        <SpeedInsights />
+      </body>
+      <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
     </html>
   );
 }
