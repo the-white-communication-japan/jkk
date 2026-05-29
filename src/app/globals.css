@@ -313,6 +313,112 @@ p {
   line-height: 1.6;
 }
 
+/* Hamburger toggle — hidden on desktop, shown when the nav collapses */
+.jkk-nav__toggle {
+  display: none;
+}
+
+/* Mobile / tablet header — collapse the nav into a toggle panel so the
+   logo + links + CTA never overflow narrow viewports. */
+@media (max-width: 880px) {
+  .jkk-header__inner {
+    position: relative;
+    gap: var(--sp-3);
+    padding: var(--sp-3) var(--sp-4);
+  }
+  .jkk-logo {
+    font-size: 19px;
+    white-space: nowrap;
+    min-width: 0;
+  }
+  .jkk-logo__sub {
+    display: none;
+  }
+
+  .jkk-nav__toggle {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    margin-left: auto;
+    flex-shrink: 0;
+    border-radius: var(--radius-sm);
+    color: var(--jkk-navy-deep);
+    transition: background 0.15s;
+  }
+  .jkk-nav__toggle:hover {
+    background: var(--jkk-off-white);
+  }
+  .jkk-nav__toggle-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  .jkk-header[data-nav-open="true"] .jkk-nav__toggle-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .jkk-header[data-nav-open="true"] .jkk-nav__toggle-bar:nth-child(2) {
+    opacity: 0;
+  }
+  .jkk-header[data-nav-open="true"] .jkk-nav__toggle-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .jkk-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-left: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: var(--sp-2) var(--sp-4) var(--sp-4);
+    background: #fff;
+    border-bottom: 1px solid var(--jkk-line);
+    box-shadow: 0 24px 40px rgba(13, 41, 68, 0.12);
+    max-height: calc(100dvh - 64px);
+    overflow-y: auto;
+  }
+  .jkk-nav[data-open="true"] {
+    display: flex;
+  }
+  .jkk-nav__list {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+  }
+  .jkk-nav__item {
+    border-bottom: 1px solid var(--jkk-line-soft);
+  }
+  .jkk-nav__link {
+    width: 100%;
+    padding: 15px 6px;
+    font-size: 16px;
+  }
+  .jkk-nav__link[aria-current="page"]::after {
+    display: none;
+  }
+  .jkk-nav__chev,
+  .jkk-dropdown {
+    display: none;
+  }
+  .btn--header {
+    width: 100%;
+    height: 50px;
+    margin-top: var(--sp-4);
+    font-size: 15px;
+  }
+}
+
 /* ============================================================
    BUTTONS
    ============================================================ */
