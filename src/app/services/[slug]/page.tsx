@@ -2,7 +2,13 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getService, services, serviceSlugs } from "@/lib/services";
-import { SITE_NAME, SITE_LOCALE, LINE_URL } from "@/lib/site";
+import {
+  SITE_NAME,
+  SITE_LOCALE,
+  LINE_URL,
+  COMPANY_TEL,
+  COMPANY_HOURS,
+} from "@/lib/site";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
@@ -258,8 +264,8 @@ export default async function ServicePage({
           </div>
           <div className="cta-band__phone">
             <small>お電話でのご相談</small>
-            <strong>0120-XXX-XXX</strong>
-            <span>平日 9:00–18:00</span>
+            <strong>{COMPANY_TEL}</strong>
+            <span>{COMPANY_HOURS}</span>
           </div>
         </div>
       </section>

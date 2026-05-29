@@ -32,6 +32,15 @@ export const GA_MEASUREMENT_ID =
 
 export const SITE_NAME = "株式会社JKK";
 
+// 会社の連絡先。フッター・CTA・構造化データの共通ソース。
+// 出典: JKK 自身の どこねっと (dokonet.jp) 掲載情報。
+export const COMPANY_POSTAL_CODE = "160-0004";
+export const COMPANY_ADDRESS = "東京都新宿区四谷4-30-23 ビルド吉田102";
+export const COMPANY_TEL = "03-3357-2501";
+export const COMPANY_TEL_HREF = `tel:${COMPANY_TEL.replace(/-/g, "")}`;
+export const COMPANY_EMAIL = "info@dokonet.jp";
+export const COMPANY_HOURS = "平日 9:00–18:00";
+
 export const SITE_TITLE =
   "株式会社JKK｜看板からネットまで。地域のお店・企業の集客を支援する。";
 

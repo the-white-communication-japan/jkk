@@ -1,12 +1,84 @@
 "use server";
 
+import { randomUUID } from "node:crypto";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { PutObjectCommand } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { prisma } from "@/lib/prisma";
 import { requireAdmin } from "@/lib/admin";
+import { s3, s3Config } from "@/lib/s3";
 import { isPostCategory, type PostCategory } from "@/lib/categories";
 
 export type PostFormState = { error?: string };
+
+/** Image MIME types we accept for upload, mapped to their file extension. */
+const ALLOWED_IMAGE_TYPES: Record<string, string> = {
+  "image/jpeg": "jpg",
+  "image/png": "png",
+  "image/webp": "webp",
+  "image/gif": "gif",
+  "image/avif": "avif",
+};
+const MAX_UPLOAD_BYTES = 10 * 1024 * 1024; // 10MB
+
+export type UploadUrlResult =
+  | { ok: true; uploadUrl: string; publicUrl: string }
+  | { ok: false; error: string };
+
+/**
+ * Issues a short-lived presigned PUT URL so the browser can upload an image
+ * straight to S3, plus the CDN URL to embed in the post body. Admin-only; the
+ * presigned URL pins Content-Type so the client can't swap in another type.
+ */
+export async function createUploadUrl(input: {
+  contentType: string;
+  size: number;
+}): Promise<UploadUrlResult> {
+  const session = await requireAdmin();
+  if (!session) {
+    return { ok: false, error: "権限がありません。再度ログインしてください。" };
+  }
+
+  const ext = ALLOWED_IMAGE_TYPES[input.contentType];
+  if (!ext) {
+    return {
+      ok: false,
+      error: "対応していない画像形式です（JPEG / PNG / WebP / GIF / AVIF）。",
+    };
+  }
+  if (!Number.isFinite(input.size) || input.size <= 0) {
+    return { ok: false, error: "ファイルサイズが不正です。" };
+  }
+  if (input.size > MAX_UPLOAD_BYTES) {
+    return { ok: false, error: "画像は10MBまでアップロードできます。" };
+  }
+
+  const config = s3Config();
+  if (!config) {
+    return {
+      ok: false,
+      error: "画像アップロードが未設定です。管理者にお問い合わせください。",
+    };
+  }
+
+  const now = new Date();
+  const yyyy = now.getUTCFullYear();
+  const mm = String(now.getUTCMonth() + 1).padStart(2, "0");
+  const key = `blog/${yyyy}/${mm}/${randomUUID()}.${ext}`;
+
+  const uploadUrl = await getSignedUrl(
+    s3,
+    new PutObjectCommand({
+      Bucket: config.bucket,
+      Key: key,
+      ContentType: input.contentType,
+    }),
+    { expiresIn: 60 },
+  );
+
+  return { ok: true, uploadUrl, publicUrl: `${config.cdnBaseUrl}/${key}` };
+}
 
 function makeExcerpt(content: string): string {
   return content

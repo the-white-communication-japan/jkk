@@ -29,7 +29,7 @@ export default async function ManageLayout({
           <p>
             <strong>{session.user.email}</strong>
             <br />
-            このアカウントにはブログ管理権限がありません。
+            このアカウントには新着情報管理権限がありません。
             <br />
             権限が必要な場合は管理者にご連絡ください。
           </p>

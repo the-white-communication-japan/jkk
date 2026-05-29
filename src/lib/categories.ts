@@ -13,7 +13,7 @@ export type CategoryMeta = {
 
 export const POST_CATEGORIES: CategoryMeta[] = [
   { value: "NOTICE", label: "お知らせ", slug: "notice", badgeClass: "news-cat--info" },
-  { value: "NEWS", label: "ニュース", slug: "news", badgeClass: "news-cat--service" },
+  { value: "NEWS", label: "ブログ", slug: "news", badgeClass: "news-cat--service" },
   { value: "UPDATE", label: "アップデート", slug: "update", badgeClass: "news-cat--media" },
 ];
 

@@ -30,7 +30,7 @@ export async function generateMetadata({
   }
   const url = `/blog/${post.id}`;
   const description = post.excerpt ?? SITE_DESCRIPTION;
-  const ogTitle = `${post.title}｜${SITE_NAME} ブログ`;
+  const ogTitle = `${post.title}｜${SITE_NAME} 新着情報`;
   return {
     title: post.title,
     description,
@@ -74,7 +74,7 @@ export default async function BlogPostPage({
           <div className="page-hero__crumbs">
             <Link href="/">トップ</Link>
             <span className="sep">/</span>
-            <Link href="/blog">ブログ</Link>
+            <Link href="/blog">新着情報</Link>
             <span className="sep">/</span>
             <span>{post.title}</span>
           </div>
@@ -104,7 +104,7 @@ export default async function BlogPostPage({
 
             <div style={{ marginTop: "var(--sp-8)" }}>
               <Link className="link-arrow" href="/blog">
-                ブログ一覧へ戻る
+                新着情報一覧へ戻る
               </Link>
             </div>
           </article>

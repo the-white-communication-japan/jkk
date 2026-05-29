@@ -1,5 +1,13 @@
 import Link from "next/link";
-import { LINE_URL } from "@/lib/site";
+import {
+  LINE_URL,
+  COMPANY_POSTAL_CODE,
+  COMPANY_ADDRESS,
+  COMPANY_TEL,
+  COMPANY_TEL_HREF,
+  COMPANY_EMAIL,
+  COMPANY_HOURS,
+} from "@/lib/site";
 
 export default function SiteFooter() {
   return (
@@ -12,15 +20,15 @@ export default function SiteFooter() {
               <span>株式会社JKK</span>
             </Link>
             <div className="jkk-footer__company">
-              〒XXX-XXXX
+              〒{COMPANY_POSTAL_CODE}
               <br />
-              東京都〇〇区〇〇 1-2-3 JKKビル
+              {COMPANY_ADDRESS}
               <br />
-              TEL: 0120-XXX-XXX
+              TEL: {COMPANY_TEL}
               <br />
-              FAX: 03-XXXX-XXXX
+              Email: {COMPANY_EMAIL}
               <br />
-              営業時間：平日 9:00–18:00
+              営業時間：{COMPANY_HOURS}
             </div>
           </div>
 
@@ -63,7 +71,7 @@ export default function SiteFooter() {
                 </a>
               </li>
               <li>
-                <a href="tel:0120000000">電話で相談する</a>
+                <a href={COMPANY_TEL_HREF}>電話で相談する（{COMPANY_TEL}）</a>
               </li>
               <li>
                 <Link href="/manage">管理ログイン</Link>

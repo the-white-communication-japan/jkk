@@ -33,7 +33,7 @@ export default async function LoginPage({
 
         <h1>管理画面ログイン</h1>
         <p>
-          ブログ記事の作成・編集には、許可されたGoogleアカウントでの
+          新着情報記事の作成・編集には、許可されたGoogleアカウントでの
           <br />
           ログインが必要です。
         </p>

@@ -12,10 +12,10 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
 const BLOG_DESCRIPTION =
-  "お知らせ・ニュース・アップデート情報を、株式会社JKKが発信しています。";
+  "お知らせ・ブログ・アップデート情報を、株式会社JKKが発信しています。";
 
 export const metadata: Metadata = {
-  title: "ブログ",
+  title: "新着情報",
   description: BLOG_DESCRIPTION,
   alternates: { canonical: "/blog" },
   openGraph: {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     locale: SITE_LOCALE,
     url: "/blog",
     siteName: SITE_NAME,
-    title: `ブログ｜${SITE_NAME}`,
+    title: `新着情報｜${SITE_NAME}`,
     description: BLOG_DESCRIPTION,
   },
 };
@@ -57,11 +57,11 @@ export default async function BlogIndex({
           <div className="page-hero__crumbs">
             <Link href="/">トップ</Link>
             <span className="sep">/</span>
-            <span>ブログ</span>
+            <span>新着情報</span>
           </div>
-          <h1>ブログ</h1>
+          <h1>新着情報</h1>
           <p className="page-hero__lead">
-            お知らせ・ニュース・アップデート情報など、JKKからの最新情報をお届けします。
+            お知らせ・ブログ・アップデート情報など、JKKからの最新情報をお届けします。
           </p>
         </div>
       </section>
