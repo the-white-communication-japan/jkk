@@ -222,7 +222,7 @@ export default async function Home() {
                 <p>
                   全国の街頭に設置された案内地図看板を通じて、地域のお店・企業をわかりやすく紹介。視認性の高い看板にQRコードを掲載し、リアルな街頭からWebへの動線をつくります。
                 </p>
-                <Link className="link-arrow" href="#services">
+                <Link className="link-arrow" href="/services/signboard">
                   商工案内看板を見る
                 </Link>
               </div>
@@ -255,7 +255,7 @@ export default async function Home() {
                 <p>
                   案内地図看板と連動し、スマートフォンやPCから店舗・企業情報を発信できる地域ポータルサイト。低コストで専用ページを持ち、写真・メニュー・ブログ・お知らせなどを発信できます。
                 </p>
-                <Link className="link-arrow" href="#services">
+                <Link className="link-arrow" href="/services/dokonet">
                   どこねっと！！を見る
                 </Link>
               </div>
@@ -288,7 +288,7 @@ export default async function Home() {
                 <p>
                   Googleビジネスプロフィール、事業紹介動画、チラシ・パンフレットのデジタル化、SNS運用など、お店・企業のWeb発信を無理なく始められるようサポートします。
                 </p>
-                <Link className="link-arrow" href="#services">
+                <Link className="link-arrow" href="/services/digital">
                   デジタル支援を見る
                 </Link>
               </div>
@@ -602,7 +602,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ===== 7. ブログ ===== */}
+      {/* ===== 7. 新着情報 ===== */}
       <section className="section" id="news">
         <div className="container">
           <div className="section-header">
@@ -616,13 +616,13 @@ export default async function Home() {
               }}
             >
               <div>
-                <span className="eyebrow">Blog</span>
+                <span className="eyebrow">News</span>
                 <h2 className="section-title" style={{ marginBottom: 0 }}>
-                  ブログ
+                  新着情報
                 </h2>
               </div>
               <Link className="link-arrow" href="/blog">
-                ブログ一覧
+                新着情報一覧
               </Link>
             </div>
           </div>

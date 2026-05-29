@@ -28,13 +28,13 @@ export default function SiteFooter() {
             <h4>サービス</h4>
             <ul>
               <li>
-                <Link href="/#services">商工案内看板</Link>
+                <Link href="/services/signboard">商工案内看板</Link>
               </li>
               <li>
-                <Link href="/#services">どこねっと！！</Link>
+                <Link href="/services/dokonet">どこねっと！！</Link>
               </li>
               <li>
-                <Link href="/#services">デジタルマーケティング支援</Link>
+                <Link href="/services/digital">デジタルマーケティング支援</Link>
               </li>
             </ul>
           </div>
@@ -46,7 +46,7 @@ export default function SiteFooter() {
                 <Link href="/#cases">導入事例</Link>
               </li>
               <li>
-                <Link href="/blog">ブログ</Link>
+                <Link href="/blog">新着情報</Link>
               </li>
               <li>
                 <Link href="/blog?type=notice">お知らせ</Link>

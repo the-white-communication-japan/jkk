@@ -7,7 +7,7 @@ import { LINE_URL } from "@/lib/site";
 export default function SiteHeader({
   active,
 }: {
-  active?: "blog";
+  active?: "blog" | "services";
 }) {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
@@ -51,6 +51,7 @@ export default function SiteHeader({
                 className="jkk-nav__link"
                 href="/#services"
                 aria-haspopup="true"
+                aria-current={active === "services" ? "page" : undefined}
                 onClick={close}
               >
                 サービス <span className="jkk-nav__chev" aria-hidden="true" />
@@ -58,7 +59,7 @@ export default function SiteHeader({
               <div className="jkk-dropdown" role="menu">
                 <Link
                   className="jkk-dropdown__item"
-                  href="/#services"
+                  href="/services/signboard"
                   role="menuitem"
                   onClick={close}
                 >
@@ -69,7 +70,7 @@ export default function SiteHeader({
                 </Link>
                 <Link
                   className="jkk-dropdown__item"
-                  href="/#services"
+                  href="/services/dokonet"
                   role="menuitem"
                   onClick={close}
                 >
@@ -80,7 +81,7 @@ export default function SiteHeader({
                 </Link>
                 <Link
                   className="jkk-dropdown__item"
-                  href="/#services"
+                  href="/services/digital"
                   role="menuitem"
                   onClick={close}
                 >
@@ -105,7 +106,7 @@ export default function SiteHeader({
                 aria-current={active === "blog" ? "page" : undefined}
                 onClick={close}
               >
-                ブログ
+                新着情報
               </Link>
             </li>
           </ul>
