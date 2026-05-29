@@ -40,11 +40,11 @@ export default async function Home() {
         </div>
 
         <div className="container hero__inner">
-          <span className="hero__eyebrow">SINCE 1989 ／ JKK Co., Ltd.</span>
+          <span className="hero__eyebrow">SINCE 1985 ／ JKK Co., Ltd.</span>
           <h1 className="hero__title">
             看板からネットまで。
             <br />
-            <span className="hero__title-em">創業36年の地域ネットワーク</span>で、
+            <span className="hero__title-em">創業41年の地域ネットワーク</span>で、
             <br />
             街のお店・企業の集客を支援する。
           </h1>
@@ -70,10 +70,10 @@ export default async function Home() {
           <ul className="hero__trust">
             <li>
               <strong>
-                36<small>年</small>
+                41<small>年</small>
               </strong>
               <span>
-                創業1989年からの
+                創業1985年からの
                 <br />
                 地域に根差した実績
               </span>

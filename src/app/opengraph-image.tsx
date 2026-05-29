@@ -30,7 +30,7 @@ export default async function Image() {
   const tagline = "看板からネットまで。";
   const sub = "地域のお店・企業の集客を、一括で支援する。";
   const services = "商工案内看板 ／ どこねっと！！ ／ デジタルマーケティング支援";
-  const badge = "創業36年の地域ネットワーク";
+  const badge = "創業41年の地域ネットワーク";
   const text = brand + tagline + sub + services + badge + "JKK";
 
   let fonts;

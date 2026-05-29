@@ -23,7 +23,7 @@ export default function SiteHeader({
         >
           <span className="jkk-logo__mark">JKK</span>
           <span>株式会社JKK</span>
-          <span className="jkk-logo__sub">since 1989</span>
+          <span className="jkk-logo__sub">since 1985</span>
         </Link>
 
         <button
@@ -64,7 +64,7 @@ export default function SiteHeader({
                 >
                   <div className="jkk-dropdown__title">商工案内看板</div>
                   <div className="jkk-dropdown__desc">
-                    街頭から店舗・企業へ。実績36年の案内地図看板
+                    街頭から店舗・企業へ。実績41年の案内地図看板
                   </div>
                 </Link>
                 <Link
