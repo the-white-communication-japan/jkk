@@ -16,8 +16,8 @@ export default function SiteFooter() {
         <div className="jkk-footer__grid">
           <div className="jkk-footer__brand">
             <Link className="jkk-logo" href="/" style={{ color: "#fff" }}>
-              <span className="jkk-logo__mark">JKK</span>
-              <span>株式会社JKK</span>
+              <span className="jkk-logo__corp">株式会社</span>
+              <span className="jkk-logo__letters">JKK</span>
             </Link>
             <div className="jkk-footer__company">
               〒{COMPANY_POSTAL_CODE}

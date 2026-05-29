@@ -191,32 +191,22 @@ p {
 }
 .jkk-logo {
   display: inline-flex;
-  align-items: baseline;
-  gap: 8px;
-  font-family: var(--jkk-font-display);
-  font-weight: 800;
+  align-items: center;
+  gap: 9px;
   color: var(--jkk-navy-deep);
-  letter-spacing: 0.04em;
-  font-size: 22px;
+  line-height: 1;
 }
-.jkk-logo__mark {
-  display: inline-grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  background: var(--jkk-navy);
-  color: #fff;
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: 0.03em;
+.jkk-logo__corp {
+  font-family: var(--jkk-font-display);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.06em;
 }
-.jkk-logo__sub {
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--jkk-ink-mute);
-  letter-spacing: 0.18em;
-  margin-left: 2px;
+.jkk-logo__letters {
+  font-family: var(--jkk-font-serif);
+  font-weight: 700;
+  font-size: 34px;
+  letter-spacing: 0.02em;
 }
 
 .jkk-nav {
@@ -327,12 +317,14 @@ p {
     padding: var(--sp-3) var(--sp-4);
   }
   .jkk-logo {
-    font-size: 19px;
     white-space: nowrap;
     min-width: 0;
   }
-  .jkk-logo__sub {
-    display: none;
+  .jkk-logo__corp {
+    font-size: 14px;
+  }
+  .jkk-logo__letters {
+    font-size: 28px;
   }
 
   .jkk-nav__toggle {
@@ -591,13 +583,6 @@ p {
 }
 .jkk-footer__brand .jkk-logo {
   color: #fff;
-}
-.jkk-footer__brand .jkk-logo__mark {
-  background: #fff;
-  color: var(--jkk-navy-deep);
-}
-.jkk-footer__brand .jkk-logo__sub {
-  color: rgba(255, 255, 255, 0.55);
 }
 .jkk-footer__company {
   margin-top: var(--sp-5);
@@ -1595,10 +1580,6 @@ p {
 }
 .manage__side .jkk-logo {
   color: #fff;
-}
-.manage__side .jkk-logo__mark {
-  background: #fff;
-  color: var(--jkk-navy-deep);
 }
 .manage__nav {
   display: flex;

@@ -5,23 +5,25 @@ export const alt =
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-// Fetch a Noto Sans JP subset (TrueType) from Google Fonts so Japanese glyphs
-// render in the OG card. Google returns TTF when the request lacks a browser
-// User-Agent, which is what satori needs.
-async function loadNotoSansJP(
+// Fetch a Google Font subset (TrueType) so Japanese glyphs render in the OG
+// card. Google returns TTF when the request lacks a browser User-Agent, which
+// is what satori needs.
+async function loadGoogleFont(
+  family: string,
   text: string,
   weight: number,
 ): Promise<ArrayBuffer> {
-  const url = `https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@${weight}&text=${encodeURIComponent(
-    text,
-  )}`;
+  const url = `https://fonts.googleapis.com/css2?family=${family.replace(
+    / /g,
+    "+",
+  )}:wght@${weight}&text=${encodeURIComponent(text)}`;
   const css = await (await fetch(url)).text();
   const src = css.match(
     /src: url\((.+?)\) format\('(?:opentype|truetype)'\)/,
   )?.[1];
-  if (!src) throw new Error("Noto Sans JP source not found");
+  if (!src) throw new Error(`${family} source not found`);
   const res = await fetch(src);
-  if (!res.ok) throw new Error("Noto Sans JP download failed");
+  if (!res.ok) throw new Error(`${family} download failed`);
   return res.arrayBuffer();
 }
 
@@ -35,13 +37,15 @@ export default async function Image() {
 
   let fonts;
   try {
-    const [regular, bold] = await Promise.all([
-      loadNotoSansJP(text, 400),
-      loadNotoSansJP(text, 700),
+    const [regular, bold, serifBold] = await Promise.all([
+      loadGoogleFont("Noto Sans JP", text, 400),
+      loadGoogleFont("Noto Sans JP", text, 700),
+      loadGoogleFont("Noto Serif JP", "JKK", 700),
     ]);
     fonts = [
       { name: "Noto Sans JP", data: regular, weight: 400 as const, style: "normal" as const },
       { name: "Noto Sans JP", data: bold, weight: 700 as const, style: "normal" as const },
+      { name: "Noto Serif JP", data: serifBold, weight: 700 as const, style: "normal" as const },
     ];
   } catch {
     // Google Fonts unreachable — render with the default font (the Latin "JKK"
@@ -64,26 +68,29 @@ export default async function Image() {
           fontFamily: "Noto Sans JP",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
           <div
             style={{
               display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: "84px",
-              height: "84px",
-              borderRadius: "18px",
-              background: "#ffffff",
-              color: "#14375c",
-              fontSize: "40px",
+              fontFamily: "Noto Sans JP",
+              fontSize: "42px",
               fontWeight: 700,
-              letterSpacing: "1px",
+              letterSpacing: "3px",
+            }}
+          >
+            株式会社
+          </div>
+          <div
+            style={{
+              display: "flex",
+              fontFamily: "Noto Serif JP",
+              fontSize: "88px",
+              fontWeight: 700,
+              lineHeight: 1,
+              letterSpacing: "2px",
             }}
           >
             JKK
-          </div>
-          <div style={{ display: "flex", fontSize: "32px", fontWeight: 700 }}>
-            {brand}
           </div>
         </div>
 

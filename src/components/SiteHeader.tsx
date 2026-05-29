@@ -21,9 +21,8 @@ export default function SiteHeader({
           aria-label="株式会社JKK トップへ"
           onClick={close}
         >
-          <span className="jkk-logo__mark">JKK</span>
-          <span>株式会社JKK</span>
-          <span className="jkk-logo__sub">since 1985</span>
+          <span className="jkk-logo__corp">株式会社</span>
+          <span className="jkk-logo__letters">JKK</span>
         </Link>
 
         <button

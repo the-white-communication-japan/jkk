@@ -27,8 +27,8 @@ export default async function LoginPage({
     <main className="auth-wrap">
       <div className="auth-card">
         <Link className="jkk-logo" href="/">
-          <span className="jkk-logo__mark">JKK</span>
-          <span>株式会社JKK</span>
+          <span className="jkk-logo__corp">株式会社</span>
+          <span className="jkk-logo__letters">JKK</span>
         </Link>
 
         <h1>管理画面ログイン</h1>

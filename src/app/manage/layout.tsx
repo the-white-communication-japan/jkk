@@ -22,8 +22,8 @@ export default async function ManageLayout({
       <main className="auth-wrap">
         <div className="auth-card">
           <Link className="jkk-logo" href="/">
-            <span className="jkk-logo__mark">JKK</span>
-            <span>株式会社JKK</span>
+            <span className="jkk-logo__corp">株式会社</span>
+            <span className="jkk-logo__letters">JKK</span>
           </Link>
           <h1>アクセス権限がありません</h1>
           <p>
@@ -52,8 +52,8 @@ export default async function ManageLayout({
     <div className="manage">
       <aside className="manage__side">
         <Link className="jkk-logo" href="/manage">
-          <span className="jkk-logo__mark">JKK</span>
-          <span>管理画面</span>
+          <span className="jkk-logo__letters">JKK</span>
+          <span className="jkk-logo__corp">管理画面</span>
         </Link>
 
         <ManageNav />
