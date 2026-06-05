@@ -286,7 +286,7 @@ export default async function Home() {
                   Webプロモーション
                 </h3>
                 <p>
-                  Googleビジネスプロフィール、事業紹介動画、チラシ・パンフレットのデジタル化、SNS運用など、お店・企業のWeb発信を無理なく始められるようサポートします。
+                  Googleビジネスプロフィール、事業紹介動画、チラシ・パンフレットのデジタル化など、お店・企業のWeb発信を無理なく始められるようサポートします。
                 </p>
                 <Link className="link-arrow" href="/services/digital">
                   デジタル支援を見る

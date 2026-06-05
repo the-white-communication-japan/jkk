@@ -2121,3 +2121,84 @@ p {
   border-radius: var(--radius);
   margin: var(--sp-5) 0;
 }
+
+/* ============================================================
+   PARTNER SERVICES (提携会社のサービス一覧)
+   ============================================================ */
+.partners-title {
+  font-size: var(--t-h2);
+  font-weight: 700;
+  color: var(--jkk-navy-deep);
+  line-height: 1.4;
+  margin-bottom: var(--sp-4);
+}
+.partners-lead {
+  font-size: var(--t-small);
+  color: var(--jkk-ink-mute);
+  line-height: 1.9;
+  max-width: 720px;
+  margin-inline: auto;
+}
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-5);
+}
+.partner-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--jkk-line);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-6);
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+.partner-card:hover {
+  border-color: #cfd6df;
+  box-shadow: 0 12px 30px rgba(20, 55, 92, 0.08);
+  transform: translateY(-2px);
+}
+.partner-card__logo {
+  margin-bottom: var(--sp-4);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
+.partner-card__logo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+.partner-card__name {
+  font-size: var(--t-h3);
+  font-weight: 700;
+  color: var(--jkk-navy-deep);
+  margin-bottom: var(--sp-3);
+}
+.partner-card__desc {
+  font-size: var(--t-small);
+  color: var(--jkk-ink-soft);
+  line-height: 1.9;
+  flex: 1 1 auto;
+  margin-bottom: var(--sp-5);
+}
+.partner-card .link-arrow {
+  font-size: var(--t-small);
+}
+.partner-card:hover .link-arrow {
+  gap: 12px;
+}
+@media (max-width: 880px) {
+  .partners-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 560px) {
+  .partners-grid {
+    grid-template-columns: 1fr;
+  }
+}

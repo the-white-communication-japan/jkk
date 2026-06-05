@@ -148,6 +148,39 @@ export default async function ServicePage({
         </div>
       </section>
 
+      {/* ===== PARTNER SERVICES ===== */}
+      {svc.partners && svc.partners.length > 0 && (
+        <section className="section">
+          <div className="container">
+            <div className="section-header center">
+              <span className="eyebrow">Partners</span>
+              <h2 className="partners-title">{svc.partnersHeading}</h2>
+              {svc.partnersLead && (
+                <p className="partners-lead">{svc.partnersLead}</p>
+              )}
+            </div>
+            <div className="partners-grid">
+              {svc.partners.map((p) => (
+                <a
+                  className="partner-card"
+                  key={p.name}
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="partner-card__logo">
+                    <img src={p.image} alt={p.name} loading="lazy" />
+                  </div>
+                  <h3 className="partner-card__name">{p.name}</h3>
+                  <p className="partner-card__desc">{p.desc}</p>
+                  <span className="link-arrow">詳しく見る</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ===== FAQ ===== */}
       {svc.faq && svc.faq.length > 0 && (
         <section className="section">

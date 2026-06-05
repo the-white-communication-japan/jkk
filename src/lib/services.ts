@@ -12,6 +12,13 @@ export interface ServiceFaq {
   a: string;
 }
 
+export interface PartnerService {
+  name: string;
+  desc: string;
+  url: string;
+  image: string;
+}
+
 export interface Service {
   slug: string;
   num: string;
@@ -27,6 +34,9 @@ export interface Service {
   features: ServiceFeature[];
   faqHeading?: string;
   faq?: ServiceFaq[];
+  partnersHeading?: string;
+  partnersLead?: string;
+  partners?: PartnerService[];
   metaTitle: string;
   metaDescription: string;
 }
@@ -161,15 +171,15 @@ export const services: Service[] = [
     pillBg: "rgba(45,140,214,.10)",
     pillFg: "var(--jkk-accent)",
     navLabel: "デジタルマーケティング支援",
-    navDesc: "Googleビジネス・SNS・動画・LINE・ECまで",
+    navDesc: "Googleビジネス・動画・チラシのデジタル化まで",
     heroTitle: "多角的なWebプロモーション",
     heroLead:
-      "Googleビジネスプロフィール、事業紹介動画、チラシのデジタル化、SNS運用まで。お店・企業のWeb発信を、無理なく始められるよう伴走します。",
+      "Googleビジネスプロフィール、事業紹介動画、チラシのデジタル化まで。お店・企業のWeb発信を、無理なく始められるよう伴走します。",
     overview: [
       "「何から始めればいいか分からない」「続けられるか不安」。デジタルの集客には、そんな悩みがつきものです。JKKは、お店・企業の状況に合わせて、無理なく始められるWeb発信をまるごとサポートします。",
-      "Googleビジネスプロフィールの運用、事業紹介動画の制作、チラシ・パンフレットのデジタル化、SNS運用、LINE公式アカウント、ネット予約・ECの導入まで。必要なものを必要なぶんだけ、地域の担当者が伴走しながら進めます。",
+      "Googleビジネスプロフィールの運用、事業紹介動画の制作、チラシ・パンフレットのデジタル化まで。必要なものを必要なぶんだけ、地域の担当者が伴走しながら進めます。",
     ],
-    featuresHeading: "デジタル支援のメニュー",
+    featuresHeading: "デジタルマーケティング支援　サービス一覧",
     features: [
       {
         title: "Googleビジネスプロフィール運用",
@@ -183,23 +193,11 @@ export const services: Service[] = [
         title: "チラシ・パンフのデジタル化",
         body: "紙の販促物を、Webでも届けられる形に。これまでの資産をデジタル発信に活かします。",
       },
-      {
-        title: "SNS運用支援",
-        body: "どの媒体を、どう続けるか。運用の設計から投稿のご相談まで、無理のない発信をサポートします。",
-      },
-      {
-        title: "LINE公式アカウント活用",
-        body: "常連のお客様とつながり、再来店を促す。LINEを使った地域のリピーター施策をご提案します。",
-      },
-      {
-        title: "ネット予約・ECの導入",
-        body: "予約やオンライン販売のしくみづくりもご相談いただけます。「気になった」を、行動につなげます。",
-      },
     ],
     faqHeading: "よくあるご質問",
     faq: [
       {
-        q: "一部のメニューだけでも頼めますか？",
+        q: "一部のサービスだけ利用することは可能ですか？",
         a: "もちろんです。Googleビジネスプロフィールだけ、動画だけ、といった単発のご相談も歓迎です。必要なものから始められます。",
       },
       {
@@ -211,9 +209,38 @@ export const services: Service[] = [
         a: "はい。制作だけでなく、その後の運用・更新まで、地域の担当者が継続して伴走します。",
       },
     ],
+    partnersHeading: "提携会社のサービス一覧",
+    partnersLead:
+      "当社がサービス導入窓口となり、お客様のご要望に合わせてご提案からお申し込み、導入サポートまで対応いたします。",
+    partners: [
+      {
+        name: "Outaigate",
+        desc: "LINEやチャットボット等の問い合わせ対応からインターネット予約、広告配信まで一元管理できます。",
+        url: "https://www.thewc.co.jp/outaigate/",
+        image: "/partners/outaigate.png",
+      },
+      {
+        name: "Lstore",
+        desc: "LINEを活用して商品販売・注文管理・顧客対応を簡単に行えるツールです。ネットショップの運営がはじめてでも、スマホひとつで手軽にスタートできます。",
+        url: "https://www.thewc.co.jp/lstore-ec/",
+        image: "/partners/lstore.png",
+      },
+      {
+        name: "adglow",
+        desc: "企業とインフルエンサーをマッチングする広告プラットフォームです。最適なインフルエンサーを見つけ、効果的なプロモーションを通じてブランド認知や売上向上を目指せます。",
+        url: "https://advertiser.adglow.io/ja-JP/",
+        image: "/partners/adglow.png",
+      },
+      {
+        name: "デジタルサイネージ",
+        desc: "店舗の入口やショーウィンドウに設置する電子看板です。お好きな画像・動画だけでなく、店舗に来店したインフルエンサーのレビューも自動的に表示させることができます。",
+        url: "https://adglow.io/ja-JP/banner/signage",
+        image: "/partners/signage.png",
+      },
+    ],
     metaTitle: "デジタルマーケティング支援",
     metaDescription:
-      "Googleビジネスプロフィール運用、事業紹介動画、チラシのデジタル化、SNS運用、LINE公式、ネット予約・ECまで。お店・企業のWeb発信を無理なく始められるよう伴走支援します。",
+      "Googleビジネスプロフィール運用、事業紹介動画、チラシのデジタル化まで。お店・企業のWeb発信を無理なく始められるよう伴走支援します。",
   },
 ];
 
