@@ -30,6 +30,9 @@ export interface Service {
   heroTitle: string;
   heroLead: string;
   overview: string[];
+  overviewImage?: string;
+  overviewImageAlt?: string;
+  overviewImageCaption?: string;
   featuresHeading: string;
   features: ServiceFeature[];
   faqHeading?: string;
@@ -57,6 +60,9 @@ export const services: Service[] = [
       "駅前・商店街・観光地・ロードサイドなど、人通りの多い場所に設置された案内地図看板。地域を訪れた人がふと地図を確認するその瞬間に、お店・企業の情報を自然に届けます。創業1985年から積み重ねてきた地域ネットワークで、視認性の高い掲載位置をご提案します。",
       "看板はただ掲示するだけでは終わりません。QRコードを掲載することで、スマートフォンから地域密着型ポータルサイト『どこねっと！！』の店舗ページへ。リアルな街頭からWebへの導線を一本につなぎ、「気になった」を「来店・お問い合わせ」へと近づけます。",
     ],
+    overviewImage: "/signboard-site.jpg",
+    overviewImageAlt: "街頭の通学路沿いに設置された案内地図看板",
+    overviewImageCaption: "通学路・ロードサイドなど、人通りの多い場所に設置された案内地図看板",
     featuresHeading: "商工案内看板の特徴",
     features: [
       {
@@ -118,6 +124,9 @@ export const services: Service[] = [
       "『どこねっと！！』は、案内地図看板と連動した地域密着型のポータルサイトです。看板のQRコードから訪れたお客様に、お店・企業の魅力をスマートフォンでしっかり伝えることができます。ホームページを一から作るより手軽に、専用ページを持てます。",
       "写真・メニュー・営業時間・地図・お知らせ・ブログまで、来店前に知りたい情報をまとめて掲載。低コストで始められ、情報の追加・更新もかんたんです。難しい操作や専門知識は必要ありません。",
     ],
+    overviewImage: "/dokonet-osaka.png",
+    overviewImageAlt: "地域密着型ポータルサイト「どこねっと！！」大阪版の画面",
+    overviewImageCaption: "エリアごとに店舗・企業を探せる地域ポータル「どこねっと！！」の実際の画面",
     featuresHeading: "どこねっと！！でできること",
     features: [
       {

@@ -7,7 +7,7 @@ import { LINE_URL } from "@/lib/site";
 export default function SiteHeader({
   active,
 }: {
-  active?: "blog" | "services";
+  active?: "blog" | "services" | "gallery";
 }) {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
@@ -96,6 +96,16 @@ export default function SiteHeader({
             <li className="jkk-nav__item">
               <Link className="jkk-nav__link" href="/#cases" onClick={close}>
                 導入事例
+              </Link>
+            </li>
+            <li className="jkk-nav__item">
+              <Link
+                className="jkk-nav__link"
+                href="/gallery"
+                aria-current={active === "gallery" ? "page" : undefined}
+                onClick={close}
+              >
+                ギャラリー
               </Link>
             </li>
             <li className="jkk-nav__item">

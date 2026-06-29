@@ -118,6 +118,18 @@ export default async function ServicePage({
               </p>
             ))}
           </div>
+          {svc.overviewImage && (
+            <figure className="overview-figure">
+              <img
+                src={svc.overviewImage}
+                alt={svc.overviewImageAlt ?? svc.navLabel}
+                loading="lazy"
+              />
+              {svc.overviewImageCaption && (
+                <figcaption>{svc.overviewImageCaption}</figcaption>
+              )}
+            </figure>
+          )}
         </div>
       </section>
 

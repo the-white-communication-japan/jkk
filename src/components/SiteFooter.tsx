@@ -54,6 +54,9 @@ export default function SiteFooter() {
                 <Link href="/#cases">導入事例</Link>
               </li>
               <li>
+                <Link href="/gallery">ギャラリー</Link>
+              </li>
+              <li>
                 <Link href="/blog">新着情報</Link>
               </li>
               <li>

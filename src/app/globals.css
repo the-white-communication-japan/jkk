@@ -526,6 +526,72 @@ p {
   justify-content: center;
 }
 
+/* Overview 本文の代表画像 */
+.overview-figure {
+  margin: var(--sp-8) 0 0;
+}
+.overview-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 50px rgba(13, 41, 68, 0.1), 0 4px 14px rgba(13, 41, 68, 0.06);
+}
+.overview-figure figcaption {
+  margin-top: var(--sp-3);
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--jkk-ink-soft);
+}
+
+/* ギャラリー：縦横比の異なる写真を masonry 風に並べる */
+.gallery-masonry {
+  columns: 3 300px;
+  column-gap: var(--sp-5);
+}
+.gallery-item {
+  break-inside: avoid;
+  margin: 0 0 var(--sp-5);
+  background: #fff;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(20, 55, 92, 0.08);
+  border: 1px solid rgba(20, 55, 92, 0.06);
+}
+.gallery-item__media {
+  position: relative;
+  line-height: 0;
+}
+.gallery-item__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.gallery-item__tag {
+  position: absolute;
+  top: var(--sp-3);
+  left: var(--sp-3);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(13, 41, 68, 0.78);
+  backdrop-filter: blur(2px);
+}
+.gallery-item__caption {
+  padding: var(--sp-4);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--jkk-ink-soft);
+}
+
+@media (max-width: 720px) {
+  .gallery-masonry {
+    columns: 1;
+  }
+}
+
 /* ============================================================
    CARDS
    ============================================================ */
