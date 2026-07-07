@@ -196,18 +196,12 @@ export default async function Home() {
           <div className="services-grid">
             <article className="service-card">
               <div className="service-card__visual photo photo--map">
-                <div className="photo__icon">
-                  <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
-                    <rect x="40" y="35" width="120" height="100" rx="6" fill="rgba(255,255,255,.08)" />
-                    <path d="M55 60 L80 50 L120 65 L150 55 L150 120 L120 130 L80 115 L55 125 Z" fill="rgba(255,255,255,.1)" />
-                    <line x1="80" y1="50" x2="80" y2="115" />
-                    <line x1="120" y1="65" x2="120" y2="130" />
-                    <circle cx="100" cy="85" r="4" fill="currentColor" stroke="none" />
-                    <circle cx="135" cy="100" r="4" fill="currentColor" stroke="none" />
-                    <line x1="100" y1="135" x2="100" y2="170" />
-                    <line x1="85" y1="170" x2="115" y2="170" />
-                  </svg>
-                </div>
+                <img
+                  className="photo__img"
+                  src="/signboard-site-2.jpg"
+                  alt="街頭に設置された案内地図看板"
+                  loading="lazy"
+                />
                 <div className="service-card__num">01</div>
               </div>
               <div className="service-card__body">
@@ -230,17 +224,12 @@ export default async function Home() {
 
             <article className="service-card">
               <div className="service-card__visual photo photo--phone">
-                <div className="photo__icon">
-                  <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
-                    <rect x="60" y="20" width="80" height="160" rx="14" fill="rgba(255,255,255,.08)" />
-                    <rect x="72" y="40" width="56" height="34" rx="3" fill="currentColor" opacity=".25" stroke="none" />
-                    <line x1="72" y1="86" x2="128" y2="86" />
-                    <line x1="72" y1="98" x2="116" y2="98" />
-                    <rect x="72" y="112" width="26" height="26" rx="3" fill="currentColor" opacity=".2" stroke="none" />
-                    <rect x="102" y="112" width="26" height="26" rx="3" fill="currentColor" opacity=".2" stroke="none" />
-                    <circle cx="100" cy="160" r="4" />
-                  </svg>
-                </div>
+                <img
+                  className="photo__img"
+                  src="/dokonet-osaka.png"
+                  alt="地域密着型ポータルサイト「どこねっと！！」の画面"
+                  loading="lazy"
+                />
                 <div className="service-card__num">02</div>
               </div>
               <div className="service-card__body">
@@ -263,17 +252,12 @@ export default async function Home() {
 
             <article className="service-card">
               <div className="service-card__visual photo photo--staff">
-                <div className="photo__icon">
-                  <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
-                    <circle cx="100" cy="100" r="58" fill="rgba(255,255,255,.08)" />
-                    <circle cx="100" cy="100" r="34" strokeDasharray="6 4" />
-                    <circle cx="100" cy="65" r="6" fill="currentColor" stroke="none" />
-                    <circle cx="135" cy="100" r="6" fill="currentColor" stroke="none" />
-                    <circle cx="100" cy="135" r="6" fill="currentColor" stroke="none" />
-                    <circle cx="65" cy="100" r="6" fill="currentColor" stroke="none" />
-                    <circle cx="100" cy="100" r="3" fill="currentColor" stroke="none" />
-                  </svg>
-                </div>
+                <img
+                  className="photo__img"
+                  src="/dokonet-guide.png"
+                  alt="Googleビジネスプロフィールなどデジタル支援サービスの案内"
+                  loading="lazy"
+                />
                 <div className="service-card__num">03</div>
               </div>
               <div className="service-card__body">
@@ -413,16 +397,12 @@ export default async function Home() {
           <ol className="flow-steps">
             <li className="flow-step">
               <div className="flow-step__visual photo photo--street">
-                <div className="photo__icon">
-                  <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
-                    <rect x="30" y="40" width="140" height="80" rx="4" fill="rgba(255,255,255,.08)" />
-                    <line x1="100" y1="120" x2="100" y2="170" />
-                    <line x1="85" y1="170" x2="115" y2="170" />
-                    <line x1="45" y1="60" x2="155" y2="60" />
-                    <line x1="45" y1="78" x2="135" y2="78" />
-                    <line x1="45" y1="96" x2="145" y2="96" />
-                  </svg>
-                </div>
+                <img
+                  className="photo__img"
+                  src="/signboard-site.jpg"
+                  alt="通学路沿いに設置された案内地図看板"
+                  loading="lazy"
+                />
               </div>
               <div className="flow-step__body">
                 <div className="flow-step__step">STEP 01</div>
@@ -435,19 +415,12 @@ export default async function Home() {
 
             <li className="flow-step">
               <div className="flow-step__visual photo photo--signage">
-                <div className="photo__icon">
-                  <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="0">
-                    <rect x="60" y="60" width="80" height="80" rx="4" fill="rgba(255,255,255,.95)" />
-                    <rect x="70" y="70" width="20" height="20" fill="currentColor" style={{ color: "#0d2944" }} />
-                    <rect x="110" y="70" width="20" height="20" fill="currentColor" style={{ color: "#0d2944" }} />
-                    <rect x="70" y="110" width="20" height="20" fill="currentColor" style={{ color: "#0d2944" }} />
-                    <rect x="98" y="100" width="6" height="6" fill="currentColor" style={{ color: "#0d2944" }} />
-                    <rect x="116" y="100" width="6" height="6" fill="currentColor" style={{ color: "#0d2944" }} />
-                    <rect x="104" y="116" width="6" height="6" fill="currentColor" style={{ color: "#0d2944" }} />
-                    <rect x="122" y="124" width="6" height="6" fill="currentColor" style={{ color: "#0d2944" }} />
-                    <rect x="116" y="116" width="6" height="6" fill="currentColor" style={{ color: "#0d2944" }} />
-                  </svg>
-                </div>
+                <img
+                  className="photo__img"
+                  src="/signboard-map.jpg"
+                  alt="QRコードが掲載された案内地図看板のクローズアップ"
+                  loading="lazy"
+                />
               </div>
               <div className="flow-step__body">
                 <div className="flow-step__step">STEP 02</div>
@@ -460,18 +433,12 @@ export default async function Home() {
 
             <li className="flow-step">
               <div className="flow-step__visual photo photo--phone">
-                <div className="photo__icon">
-                  <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
-                    <rect x="60" y="20" width="80" height="160" rx="14" fill="rgba(255,255,255,.08)" />
-                    <rect x="72" y="40" width="56" height="38" rx="3" fill="currentColor" opacity=".3" stroke="none" />
-                    <line x1="72" y1="90" x2="128" y2="90" />
-                    <line x1="72" y1="102" x2="116" y2="102" />
-                    <rect x="72" y="116" width="26" height="22" rx="3" />
-                    <rect x="102" y="116" width="26" height="22" rx="3" />
-                    <line x1="72" y1="148" x2="128" y2="148" />
-                    <line x1="72" y1="158" x2="110" y2="158" />
-                  </svg>
-                </div>
+                <img
+                  className="photo__img"
+                  src="/dokonet-osaka.png"
+                  alt="スマホで見る「どこねっと！！」の店舗情報ページ"
+                  loading="lazy"
+                />
               </div>
               <div className="flow-step__body">
                 <div className="flow-step__step">STEP 03</div>
