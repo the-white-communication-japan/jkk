@@ -1443,6 +1443,20 @@ p {
   flex-direction: column;
   gap: var(--sp-3);
 }
+/* 導入事例カード上部の実写バナー。カード内 padding を負マージンで相殺し、
+   上端いっぱいに敷いて角を上側だけ丸める。 */
+.case-card__media {
+  margin: calc(var(--sp-7) * -1) calc(var(--sp-7) * -1) 0;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+.case-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 .case-card__top {
   display: flex;
   align-items: flex-start;

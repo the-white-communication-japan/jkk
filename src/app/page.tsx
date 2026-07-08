@@ -451,13 +451,12 @@ export default async function Home() {
 
             <li className="flow-step">
               <div className="flow-step__visual photo photo--store">
-                <div className="photo__icon">
-                  <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
-                    <path d="M30 80 L100 30 L170 80 L170 160 L120 160 L120 110 L80 110 L80 160 L30 160 Z" fill="rgba(255,255,255,.1)" />
-                    <circle cx="155" cy="78" r="14" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.4)" strokeWidth="2" />
-                    <path d="M150 78 L153 82 L161 74" />
-                  </svg>
-                </div>
+                <img
+                  className="photo__img"
+                  src="/visit-shop.jpg"
+                  alt="地域の店舗に来店し、店主に迎えられるお客様"
+                  loading="lazy"
+                />
               </div>
               <div className="flow-step__body">
                 <div className="flow-step__step">STEP 04</div>
@@ -498,6 +497,9 @@ export default async function Home() {
 
           <div className="grid-3 cases-grid">
             <article className="card case-card">
+              <div className="case-card__media">
+                <img src="/case-ramen.jpg" alt="夜に赤提灯が灯る地域のラーメン店" loading="lazy" />
+              </div>
               <div className="case-card__top">
                 <span className="pill">飲食店</span>
                 <div className="case-card__metric">
@@ -519,6 +521,9 @@ export default async function Home() {
             </article>
 
             <article className="card case-card">
+              <div className="case-card__media">
+                <img src="/case-salon.jpg" alt="自然光が差し込む地域のヘアサロンの店内" loading="lazy" />
+              </div>
               <div className="case-card__top">
                 <span className="pill" style={{ background: "rgba(45,140,214,.10)", color: "var(--jkk-accent)" }}>
                   美容・サロン
@@ -542,6 +547,9 @@ export default async function Home() {
             </article>
 
             <article className="card case-card">
+              <div className="case-card__media">
+                <img src="/case-clinic.jpg" alt="明るく清潔な地域の歯科クリニックの受付・待合" loading="lazy" />
+              </div>
               <div className="case-card__top">
                 <span className="pill" style={{ background: "rgba(20,55,92,.08)", color: "var(--jkk-navy)" }}>
                   クリニック

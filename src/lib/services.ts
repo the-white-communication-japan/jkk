@@ -188,6 +188,9 @@ export const services: Service[] = [
       "「何から始めればいいか分からない」「続けられるか不安」。デジタルの集客には、そんな悩みがつきものです。JKKは、お店・企業の状況に合わせて、無理なく始められるWeb発信をまるごとサポートします。",
       "Googleビジネスプロフィールの運用、事業紹介動画の制作、チラシ・パンフレットのデジタル化まで。必要なものを必要なぶんだけ、地域の担当者が伴走しながら進めます。",
     ],
+    overviewImage: "/digital-support.jpg",
+    overviewImageAlt: "タブレットを一緒に見ながらWeb発信を相談するJKK担当者とお店の方",
+    overviewImageCaption: "地域の担当者が伴走し、Googleビジネスプロフィールや動画・チラシのデジタル化をサポートします。",
     featuresHeading: "デジタルマーケティング支援　サービス一覧",
     features: [
       {
