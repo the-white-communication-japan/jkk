@@ -9,6 +9,7 @@ import { prisma } from "@/lib/prisma";
 import { requireAdmin } from "@/lib/admin";
 import { s3, s3Config } from "@/lib/s3";
 import { isPostCategory, type PostCategory } from "@/lib/categories";
+import { excerptFromMarkdown } from "@/lib/excerpt";
 
 export type PostFormState = { error?: string };
 
@@ -81,14 +82,6 @@ export async function createUploadUrl(input: {
   return { ok: true, uploadUrl, publicUrl: `${config.cdnBaseUrl}/${key}` };
 }
 
-function makeExcerpt(content: string): string {
-  return content
-    .replace(/[#>*_`~[\]()!-]/g, "")
-    .replace(/\s+/g, " ")
-    .trim()
-    .slice(0, 120);
-}
-
 export async function createPost(
   _prev: PostFormState,
   formData: FormData,
@@ -110,7 +103,7 @@ export async function createPost(
       title,
       content,
       category,
-      excerpt: makeExcerpt(content),
+      excerpt: excerptFromMarkdown(content),
       published,
       authorId: session.user.id,
     },
@@ -141,7 +134,7 @@ export async function updatePost(
 
   await prisma.post.update({
     where: { id },
-    data: { title, content, category, excerpt: makeExcerpt(content), published },
+    data: { title, content, category, excerpt: excerptFromMarkdown(content), published },
   });
 
   revalidatePath("/");

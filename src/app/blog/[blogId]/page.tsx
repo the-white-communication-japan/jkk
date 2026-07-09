@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { prisma } from "@/lib/prisma";
 import { formatDate, toISODate } from "@/lib/format";
+import { excerptFromMarkdown } from "@/lib/excerpt";
 import { categoryMeta } from "@/lib/categories";
 import { SITE_NAME, SITE_LOCALE, SITE_DESCRIPTION } from "@/lib/site";
 import SiteHeader from "@/components/SiteHeader";
@@ -29,7 +30,7 @@ export async function generateMetadata({
     };
   }
   const url = `/blog/${post.id}`;
-  const description = post.excerpt ?? SITE_DESCRIPTION;
+  const description = excerptFromMarkdown(post.content) || SITE_DESCRIPTION;
   const ogTitle = `${post.title}｜${SITE_NAME} 新着情報`;
   return {
     title: post.title,

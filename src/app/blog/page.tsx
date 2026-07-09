@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { formatDate, toISODate } from "@/lib/format";
+import { excerptFromMarkdown } from "@/lib/excerpt";
 import {
   POST_CATEGORIES,
   categoryFromSlug,
@@ -93,6 +94,7 @@ export default async function BlogIndex({
             <ul className="blog-list">
               {posts.map((post) => {
                 const cat = categoryMeta(post.category);
+                const preview = excerptFromMarkdown(post.content);
                 return (
                   <li key={post.id}>
                     <Link className="blog-card" href={`/blog/${post.id}`}>
@@ -105,7 +107,7 @@ export default async function BlogIndex({
                         </time>
                       </div>
                       <h2>{post.title}</h2>
-                      {post.excerpt ? <p>{post.excerpt}</p> : null}
+                      {preview ? <p>{preview}</p> : null}
                     </Link>
                   </li>
                 );
