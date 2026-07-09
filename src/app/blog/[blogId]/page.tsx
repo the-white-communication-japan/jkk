@@ -7,9 +7,11 @@ import { prisma } from "@/lib/prisma";
 import { formatDate, toISODate } from "@/lib/format";
 import { excerptFromMarkdown } from "@/lib/excerpt";
 import { categoryMeta } from "@/lib/categories";
-import { SITE_NAME, SITE_LOCALE, SITE_DESCRIPTION } from "@/lib/site";
+import { SITE_URL, SITE_NAME, SITE_LOCALE, SITE_DESCRIPTION } from "@/lib/site";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import JsonLd from "@/components/JsonLd";
+import { blogPostingSchema, breadcrumbSchema } from "@/lib/schema";
 
 export const dynamic = "force-dynamic";
 
@@ -68,6 +70,22 @@ export default async function BlogPostPage({
 
   return (
     <>
+      <JsonLd
+        data={[
+          blogPostingSchema({
+            id: post.id,
+            title: post.title,
+            excerpt: excerptFromMarkdown(post.content),
+            createdAt: post.createdAt,
+            updatedAt: post.updatedAt,
+          }),
+          breadcrumbSchema([
+            { name: "トップ", url: `${SITE_URL}/` },
+            { name: "新着情報", url: `${SITE_URL}/blog` },
+            { name: post.title, url: `${SITE_URL}/blog/${post.id}` },
+          ]),
+        ]}
+      />
       <SiteHeader active="blog" />
 
       <section className="page-hero">

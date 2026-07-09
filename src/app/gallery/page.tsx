@@ -1,9 +1,11 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { galleryItems } from "@/lib/gallery";
-import { SITE_NAME, SITE_LOCALE } from "@/lib/site";
+import { SITE_URL, SITE_NAME, SITE_LOCALE } from "@/lib/site";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema } from "@/lib/schema";
 
 const GALLERY_DESCRIPTION =
   "街頭に設置された案内地図看板の設置事例や、地域密着型ポータルサイト「どこねっと！！」の画面など、JKKの取り組みを写真でご紹介します。";
@@ -25,6 +27,12 @@ export const metadata: Metadata = {
 export default function GalleryPage() {
   return (
     <>
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "トップ", url: `${SITE_URL}/` },
+          { name: "ギャラリー", url: `${SITE_URL}/gallery` },
+        ])}
+      />
       <SiteHeader active="gallery" />
 
       <section className="page-hero">

@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import JsonLd from "@/components/JsonLd";
+import { siteSchema } from "@/lib/schema";
 import "./globals.css";
 import {
   SITE_URL,
@@ -66,6 +68,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body>
+        <JsonLd data={siteSchema()} />
         {children}
         <SpeedInsights />
       </body>

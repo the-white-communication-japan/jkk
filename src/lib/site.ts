@@ -36,6 +36,11 @@ export const SITE_NAME = "株式会社JKK";
 // 出典: JKK 自身の どこねっと (dokonet.jp) 掲載情報。
 export const COMPANY_POSTAL_CODE = "160-0004";
 export const COMPANY_ADDRESS = "東京都新宿区四谷4-30-23 ビルド吉田102";
+// 上の COMPANY_ADDRESS を PostalAddress 構造化データ用に分解したもの。
+export const COMPANY_ADDRESS_REGION = "東京都";
+export const COMPANY_ADDRESS_LOCALITY = "新宿区";
+export const COMPANY_STREET = "四谷4-30-23 ビルド吉田102";
+export const COMPANY_FOUNDED = "1985";
 export const COMPANY_TEL = "03-3357-2501";
 export const COMPANY_TEL_HREF = `tel:${COMPANY_TEL.replace(/-/g, "")}`;
 export const COMPANY_EMAIL = "info@dokonet.jp";

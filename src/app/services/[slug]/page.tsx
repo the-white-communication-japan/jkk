@@ -11,6 +11,8 @@ import {
 } from "@/lib/site";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import JsonLd from "@/components/JsonLd";
+import { servicePageSchema } from "@/lib/schema";
 
 export function generateStaticParams() {
   return serviceSlugs.map((slug) => ({ slug }));
@@ -64,6 +66,7 @@ export default async function ServicePage({
 
   return (
     <>
+      <JsonLd data={servicePageSchema(svc)} />
       <SiteHeader active="services" />
 
       {/* ===== HERO ===== */}
