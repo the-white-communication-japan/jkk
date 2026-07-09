@@ -13,7 +13,15 @@ import SiteFooter from "@/components/SiteFooter";
 import JsonLd from "@/components/JsonLd";
 import { blogPostingSchema, breadcrumbSchema } from "@/lib/schema";
 
-export const dynamic = "force-dynamic";
+// ISR: 個別記事も静的化し on-demand で生成・キャッシュ。更新/削除時は
+// manage/posts/actions.ts が revalidatePath(`/blog/${id}`) を呼んで即時反映する。
+export const revalidate = 300;
+
+// ビルド時は何もプリレンダーしない（DB 不要のまま）。未生成の記事は
+// 初回リクエストでレンダーし ISR キャッシュに載る（dynamicParams 既定 true）。
+export function generateStaticParams() {
+  return [];
+}
 
 export async function generateMetadata({
   params,

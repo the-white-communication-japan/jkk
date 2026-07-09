@@ -3,14 +3,10 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { formatDate, toISODate } from "@/lib/format";
 import { excerptFromMarkdown } from "@/lib/excerpt";
-import {
-  POST_CATEGORIES,
-  categoryFromSlug,
-  categoryMeta,
-} from "@/lib/categories";
 import { SITE_NAME, SITE_LOCALE } from "@/lib/site";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import BlogList, { type BlogListItem } from "@/components/BlogList";
 
 const BLOG_DESCRIPTION =
   "お知らせ・ブログ・アップデート情報を、株式会社JKKが発信しています。";
@@ -29,25 +25,34 @@ export const metadata: Metadata = {
   },
 };
 
-// Rendered per-request so new posts appear immediately and the build does not
-// require a database connection.
-export const dynamic = "force-dynamic";
+// ISR: 静的生成し 5 分ごとに再検証。記事の作成/更新/削除は
+// revalidatePath("/blog") を呼ぶので即時反映される（manage/posts/actions.ts）。
+// try/catch で DB 不通でもビルド・描画が通る（home と同じ方針）。
+export const revalidate = 300;
 
-export default async function BlogIndex({
-  searchParams,
-}: {
-  searchParams: Promise<{ type?: string }>;
-}) {
-  const { type } = await searchParams;
-  const activeCategory = categoryFromSlug(type);
+async function getPublishedPosts() {
+  try {
+    return await prisma.post.findMany({
+      where: { published: true },
+      orderBy: { createdAt: "desc" },
+    });
+  } catch {
+    return [];
+  }
+}
 
-  const posts = await prisma.post.findMany({
-    where: {
-      published: true,
-      ...(activeCategory ? { category: activeCategory } : {}),
-    },
-    orderBy: { createdAt: "desc" },
-  });
+export default async function BlogIndex() {
+  const posts = await getPublishedPosts();
+
+  // 種別フィルターはクライアント側で行うため、全件を整形して渡す。
+  const items: BlogListItem[] = posts.map((post) => ({
+    id: post.id,
+    title: post.title,
+    category: post.category,
+    dateISO: toISODate(post.createdAt),
+    dateLabel: formatDate(post.createdAt),
+    preview: excerptFromMarkdown(post.content),
+  }));
 
   return (
     <>
@@ -68,53 +73,7 @@ export default async function BlogIndex({
       </section>
 
       <section className="section">
-        <div className="container narrow">
-          <nav className="blog-filter" aria-label="種別で絞り込み">
-            <Link href="/blog" aria-current={!activeCategory ? "true" : undefined}>
-              すべて
-            </Link>
-            {POST_CATEGORIES.map((c) => (
-              <Link
-                key={c.value}
-                href={`/blog?type=${c.slug}`}
-                aria-current={activeCategory === c.value ? "true" : undefined}
-              >
-                {c.label}
-              </Link>
-            ))}
-          </nav>
-
-          {posts.length === 0 ? (
-            <div className="blog-empty">
-              {activeCategory
-                ? "この種別の記事はまだありません。"
-                : "記事は順次公開予定です。"}
-            </div>
-          ) : (
-            <ul className="blog-list">
-              {posts.map((post) => {
-                const cat = categoryMeta(post.category);
-                const preview = excerptFromMarkdown(post.content);
-                return (
-                  <li key={post.id}>
-                    <Link className="blog-card" href={`/blog/${post.id}`}>
-                      <div className="blog-card__head">
-                        <span className={`news-cat ${cat.badgeClass}`}>
-                          {cat.label}
-                        </span>
-                        <time dateTime={toISODate(post.createdAt)}>
-                          {formatDate(post.createdAt)}
-                        </time>
-                      </div>
-                      <h2>{post.title}</h2>
-                      {preview ? <p>{preview}</p> : null}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          )}
-        </div>
+        <BlogList items={items} />
       </section>
 
       <SiteFooter />

@@ -2046,7 +2046,8 @@ p {
   gap: 8px;
   margin-bottom: var(--sp-6);
 }
-.blog-filter a {
+.blog-filter a,
+.blog-filter button {
   display: inline-flex;
   align-items: center;
   padding: 9px 18px;
@@ -2056,13 +2057,18 @@ p {
   color: var(--jkk-ink-soft);
   font-size: 14px;
   font-weight: 700;
+  font-family: inherit;
+  line-height: 1;
+  cursor: pointer;
   transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
-.blog-filter a:hover {
+.blog-filter a:hover,
+.blog-filter button:hover {
   border-color: var(--jkk-navy);
   color: var(--jkk-navy);
 }
-.blog-filter a[aria-current="true"] {
+.blog-filter a[aria-current="true"],
+.blog-filter button[aria-current="true"] {
   background: var(--jkk-navy);
   border-color: var(--jkk-navy);
   color: #fff;

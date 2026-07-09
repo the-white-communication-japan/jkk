@@ -139,6 +139,7 @@ export async function updatePost(
 
   revalidatePath("/");
   revalidatePath("/blog");
+  revalidatePath(`/blog/${id}`); // ISR 化した個別記事ページを即時更新
   revalidatePath("/manage");
   redirect("/manage");
 }
@@ -151,6 +152,7 @@ export async function deletePost(id: number): Promise<void> {
 
   revalidatePath("/");
   revalidatePath("/blog");
+  revalidatePath(`/blog/${id}`); // 削除した記事の ISR キャッシュを破棄
   revalidatePath("/manage");
   redirect("/manage");
 }
