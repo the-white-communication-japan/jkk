@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { auth, signIn } from "@/auth";
+
+// 管理ログインは検索結果に出す必要がないため noindex。robots.txt でも
+// Disallow 済みだが、外部リンク経由の URL-only インデックスも防ぐ。
+export const metadata: Metadata = {
+  title: "ログイン",
+  robots: { index: false, follow: false },
+};
 
 const ERROR_MESSAGES: Record<string, string> = {
   OAuthAccountNotLinked:

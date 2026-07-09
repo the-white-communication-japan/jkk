@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
 import { SITE_URL } from "@/lib/site";
+import { serviceSlugs } from "@/lib/services";
 
 // Generated per-request so newly published posts appear immediately and the
 // build never requires a database connection (mirrors the blog pages).
@@ -22,6 +23,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "daily",
       priority: 0.8,
     },
+    {
+      url: `${SITE_URL}/gallery`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    // 個別サービスページ（/services 自体はトップへリダイレクトするので含めない）。
+    ...serviceSlugs.map((slug) => ({
+      url: `${SITE_URL}/services/${slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    })),
   ];
 
   let postRoutes: MetadataRoute.Sitemap = [];

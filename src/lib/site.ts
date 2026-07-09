@@ -41,8 +41,9 @@ export const COMPANY_TEL_HREF = `tel:${COMPANY_TEL.replace(/-/g, "")}`;
 export const COMPANY_EMAIL = "info@dokonet.jp";
 export const COMPANY_HOURS = "平日 9:00–18:00";
 
+// トップページ用 <title>。SERP 切れを避けるため主要キーワードを前寄せで簡潔に。
 export const SITE_TITLE =
-  "株式会社JKK｜看板からネットまで。地域のお店・企業の集客を支援する。";
+  "株式会社JKK｜商工案内看板・地域ポータル・集客支援";
 
 export const SITE_DESCRIPTION =
   "商工案内地図看板、地域密着型ポータルサイト『どこねっと！！』、デジタルマーケティング支援まで。創業41年の地域ネットワークで、街のお店・企業の集客を一括サポート。";
