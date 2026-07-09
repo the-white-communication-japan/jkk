@@ -2,6 +2,7 @@ import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import HeroArt from "@/components/HeroArt";
+import Image from "next/image";
 import { prisma } from "@/lib/prisma";
 import { formatDate, toISODate } from "@/lib/format";
 import { categoryMeta } from "@/lib/categories";
@@ -196,11 +197,12 @@ export default async function Home() {
           <div className="services-grid">
             <article className="service-card">
               <div className="service-card__visual photo photo--map">
-                <img
+                <Image
                   className="photo__img"
                   src="/signboard-site-2.jpg"
                   alt="街頭に設置された案内地図看板"
-                  loading="lazy"
+                  fill
+                  sizes="(max-width: 960px) 100vw, 380px"
                 />
                 <div className="service-card__num">01</div>
               </div>
@@ -224,11 +226,12 @@ export default async function Home() {
 
             <article className="service-card">
               <div className="service-card__visual photo photo--phone">
-                <img
+                <Image
                   className="photo__img"
                   src="/dokonet-osaka.png"
                   alt="地域密着型ポータルサイト「どこねっと！！」の画面"
-                  loading="lazy"
+                  fill
+                  sizes="(max-width: 960px) 100vw, 380px"
                 />
                 <div className="service-card__num">02</div>
               </div>
@@ -252,11 +255,12 @@ export default async function Home() {
 
             <article className="service-card">
               <div className="service-card__visual photo photo--staff">
-                <img
+                <Image
                   className="photo__img"
                   src="/dokonet-guide.png"
                   alt="Googleビジネスプロフィールなどデジタル支援サービスの案内"
-                  loading="lazy"
+                  fill
+                  sizes="(max-width: 960px) 100vw, 380px"
                 />
                 <div className="service-card__num">03</div>
               </div>
@@ -397,11 +401,12 @@ export default async function Home() {
           <ol className="flow-steps">
             <li className="flow-step">
               <div className="flow-step__visual photo photo--street">
-                <img
+                <Image
                   className="photo__img"
                   src="/signboard-site.jpg"
                   alt="通学路沿いに設置された案内地図看板"
-                  loading="lazy"
+                  fill
+                  sizes="(max-width: 880px) 100vw, 320px"
                 />
               </div>
               <div className="flow-step__body">
@@ -415,11 +420,12 @@ export default async function Home() {
 
             <li className="flow-step">
               <div className="flow-step__visual photo photo--signage">
-                <img
+                <Image
                   className="photo__img"
                   src="/signboard-map.jpg"
                   alt="QRコードが掲載された案内地図看板のクローズアップ"
-                  loading="lazy"
+                  fill
+                  sizes="(max-width: 880px) 100vw, 320px"
                 />
               </div>
               <div className="flow-step__body">
@@ -433,11 +439,12 @@ export default async function Home() {
 
             <li className="flow-step">
               <div className="flow-step__visual photo photo--phone">
-                <img
+                <Image
                   className="photo__img"
                   src="/dokonet-osaka.png"
                   alt="スマホで見る「どこねっと！！」の店舗情報ページ"
-                  loading="lazy"
+                  fill
+                  sizes="(max-width: 880px) 100vw, 320px"
                 />
               </div>
               <div className="flow-step__body">
@@ -451,11 +458,12 @@ export default async function Home() {
 
             <li className="flow-step">
               <div className="flow-step__visual photo photo--store">
-                <img
+                <Image
                   className="photo__img"
                   src="/visit-shop.jpg"
                   alt="地域の店舗に来店し、店主に迎えられるお客様"
-                  loading="lazy"
+                  fill
+                  sizes="(max-width: 880px) 100vw, 320px"
                 />
               </div>
               <div className="flow-step__body">
@@ -498,7 +506,12 @@ export default async function Home() {
           <div className="grid-3 cases-grid">
             <article className="card case-card">
               <div className="case-card__media">
-                <img src="/case-ramen.jpg" alt="夜に赤提灯が灯る地域のラーメン店" loading="lazy" />
+                <Image
+                  src="/case-ramen.jpg"
+                  alt="夜に赤提灯が灯る地域のラーメン店"
+                  fill
+                  sizes="(max-width: 880px) 100vw, 380px"
+                />
               </div>
               <div className="case-card__top">
                 <span className="pill">飲食店</span>
@@ -522,7 +535,12 @@ export default async function Home() {
 
             <article className="card case-card">
               <div className="case-card__media">
-                <img src="/case-salon.jpg" alt="自然光が差し込む地域のヘアサロンの店内" loading="lazy" />
+                <Image
+                  src="/case-salon.jpg"
+                  alt="自然光が差し込む地域のヘアサロンの店内"
+                  fill
+                  sizes="(max-width: 880px) 100vw, 380px"
+                />
               </div>
               <div className="case-card__top">
                 <span className="pill" style={{ background: "rgba(45,140,214,.10)", color: "var(--jkk-accent)" }}>
@@ -548,7 +566,12 @@ export default async function Home() {
 
             <article className="card case-card">
               <div className="case-card__media">
-                <img src="/case-clinic.jpg" alt="明るく清潔な地域の歯科クリニックの受付・待合" loading="lazy" />
+                <Image
+                  src="/case-clinic.jpg"
+                  alt="明るく清潔な地域の歯科クリニックの受付・待合"
+                  fill
+                  sizes="(max-width: 880px) 100vw, 380px"
+                />
               </div>
               <div className="case-card__top">
                 <span className="pill" style={{ background: "rgba(20,55,92,.08)", color: "var(--jkk-navy)" }}>

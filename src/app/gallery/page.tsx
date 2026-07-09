@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { galleryItems } from "@/lib/gallery";
 import { SITE_URL, SITE_NAME, SITE_LOCALE } from "@/lib/site";
@@ -55,7 +56,13 @@ export default function GalleryPage() {
             {galleryItems.map((item) => (
               <figure className="gallery-item" key={item.src}>
                 <div className="gallery-item__media">
-                  <img src={item.src} alt={item.alt} loading="lazy" />
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    width={item.width}
+                    height={item.height}
+                    sizes="(max-width: 720px) 100vw, 380px"
+                  />
                   <span className="gallery-item__tag">{item.tag}</span>
                 </div>
                 <figcaption className="gallery-item__caption">

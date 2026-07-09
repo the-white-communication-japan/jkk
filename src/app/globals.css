@@ -1446,6 +1446,7 @@ p {
 /* 導入事例カード上部の実写バナー。カード内 padding を負マージンで相殺し、
    上端いっぱいに敷いて角を上側だけ丸める。 */
 .case-card__media {
+  position: relative; /* next/image fill の基準 */
   margin: calc(var(--sp-7) * -1) calc(var(--sp-7) * -1) 0;
   aspect-ratio: 3 / 2;
   overflow: hidden;
@@ -2250,6 +2251,7 @@ p {
   transform: translateY(-2px);
 }
 .partner-card__logo {
+  position: relative; /* next/image fill の基準 */
   margin-bottom: var(--sp-4);
   border-radius: var(--radius-sm);
   overflow: hidden;

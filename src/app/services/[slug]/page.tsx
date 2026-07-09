@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getService, services, serviceSlugs } from "@/lib/services";
@@ -123,10 +124,12 @@ export default async function ServicePage({
           </div>
           {svc.overviewImage && (
             <figure className="overview-figure">
-              <img
+              <Image
                 src={svc.overviewImage}
                 alt={svc.overviewImageAlt ?? svc.navLabel}
-                loading="lazy"
+                width={svc.overviewImageWidth ?? 1600}
+                height={svc.overviewImageHeight ?? 1062}
+                sizes="(max-width: 800px) 100vw, 720px"
               />
               {svc.overviewImageCaption && (
                 <figcaption>{svc.overviewImageCaption}</figcaption>
@@ -184,7 +187,12 @@ export default async function ServicePage({
                   rel="noopener noreferrer"
                 >
                   <div className="partner-card__logo">
-                    <img src={p.image} alt={p.name} loading="lazy" />
+                    <Image
+                      src={p.image}
+                      alt={p.name}
+                      fill
+                      sizes="(max-width: 560px) 100vw, (max-width: 880px) 50vw, 275px"
+                    />
                   </div>
                   <h3 className="partner-card__name">{p.name}</h3>
                   <p className="partner-card__desc">{p.desc}</p>

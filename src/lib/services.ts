@@ -33,6 +33,9 @@ export interface Service {
   overviewImage?: string;
   overviewImageAlt?: string;
   overviewImageCaption?: string;
+  // next/image に必要な実寸（intrinsic 表示。CLS 防止）。
+  overviewImageWidth?: number;
+  overviewImageHeight?: number;
   featuresHeading: string;
   features: ServiceFeature[];
   faqHeading?: string;
@@ -61,6 +64,8 @@ export const services: Service[] = [
       "看板はただ掲示するだけでは終わりません。QRコードを掲載することで、スマートフォンから地域密着型ポータルサイト『どこねっと！！』の店舗ページへ。リアルな街頭からWebへの導線を一本につなぎ、「気になった」を「来店・お問い合わせ」へと近づけます。",
     ],
     overviewImage: "/signboard-site.jpg",
+    overviewImageWidth: 1108,
+    overviewImageHeight: 1477,
     overviewImageAlt: "街頭の通学路沿いに設置された案内地図看板",
     overviewImageCaption: "通学路・ロードサイドなど、人通りの多い場所に設置された案内地図看板",
     featuresHeading: "商工案内看板の特徴",
@@ -125,6 +130,8 @@ export const services: Service[] = [
       "写真・メニュー・営業時間・地図・お知らせ・ブログまで、来店前に知りたい情報をまとめて掲載。低コストで始められ、情報の追加・更新もかんたんです。難しい操作や専門知識は必要ありません。",
     ],
     overviewImage: "/dokonet-osaka.png",
+    overviewImageWidth: 1720,
+    overviewImageHeight: 1281,
     overviewImageAlt: "地域密着型ポータルサイト「どこねっと！！」大阪版の画面",
     overviewImageCaption: "エリアごとに店舗・企業を探せる地域ポータル「どこねっと！！」の実際の画面",
     featuresHeading: "どこねっと！！でできること",
@@ -189,6 +196,8 @@ export const services: Service[] = [
       "Googleビジネスプロフィールの運用、事業紹介動画の制作、チラシ・パンフレットのデジタル化まで。必要なものを必要なぶんだけ、地域の担当者が伴走しながら進めます。",
     ],
     overviewImage: "/digital-support.jpg",
+    overviewImageWidth: 1600,
+    overviewImageHeight: 1062,
     overviewImageAlt: "タブレットを一緒に見ながらWeb発信を相談するJKK担当者とお店の方",
     overviewImageCaption: "地域の担当者が伴走し、Googleビジネスプロフィールや動画・チラシのデジタル化をサポートします。",
     featuresHeading: "デジタルマーケティング支援　サービス一覧",
